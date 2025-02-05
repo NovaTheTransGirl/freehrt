@@ -1,7 +1,18 @@
-export default function Home() {
+import path from "path";
+import fs from "fs";
+
+export async function getServerSideProps() {
+    return {
+        props: {
+            videoPath: "/videomain.mp4"
+        }
+    };
+}
+
+export default function Home({ videoPath }) {
     return (
         <video 
-            src="/videomain.mp4" 
+            src={videoPath} 
             autoPlay 
             loop 
             muted={false} 
