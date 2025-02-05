@@ -5,7 +5,7 @@ from starlette.responses import HTMLResponse
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="."), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_index():
@@ -14,4 +14,4 @@ async def serve_index():
 
 @app.get("/videomain.mp4")
 async def get_video():
-    return FileResponse("videomain.mp4", media_type="video/mp4")
+    return FileResponse("static/videomain.mp4", media_type="video/mp4")
